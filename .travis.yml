@@ -33,6 +33,7 @@ sudo: false
 before_install:
   # - sudo apt-get update -q
   # - sudo apt-get install sqlite3 libdbi-perl libdbd-sqlite3-perl
+  - cpanm -qin JSON::XS
   - cpanm --skip-satisfied -qin Devel::Cover::Report::Coveralls Test::Pod::Spelling::CommonMistakes Test::Portability::Files Test::Pod::Coverage
 
 install:
