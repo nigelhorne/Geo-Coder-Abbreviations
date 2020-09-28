@@ -22,10 +22,10 @@ It takes no arguments.
 
 Abbreviate a place.
 
-        use Geo::Coder::Abbreviations;
+    use Geo::Coder::Abbreviations;
 
-        my $abbr = Geo::Coder::Abbreviations->new();
-        print $abbr->abbreviate('Road'), "\n";  # prints 'RD'
+    my $abbr = Geo::Coder::Abbreviations->new();
+    print $abbr->abbreviate('Road'), "\n";      # prints 'RD'
 
 # SEE ALSO
 
