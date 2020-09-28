@@ -20,12 +20,12 @@ It takes no arguments.
 
 ## abbreviate
 
-Abbreviate a Geo::Coder::Abbreviate;
+Abbreviate a place.
 
         use Geo::Coder::Abbreviate;
 
         my $abbr = Geo::Coder::Abbreviate->new();
-        print $abbr->abbreviate('Road'), "\n";  # prints "RD'
+        print $abbr->abbreviate('Road'), "\n";  # prints 'RD'
 
 # SEE ALSO
 

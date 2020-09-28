@@ -52,7 +52,7 @@ Abbreviate a place.
 	use Geo::Coder::Abbreviate;
 
 	my $abbr = Geo::Coder::Abbreviate->new();
-	print $abbr->abbreviate('Road'), "\n";	# prints "RD'
+	print $abbr->abbreviate('Road'), "\n";	# prints 'RD'
 
 =cut
 
