@@ -15,6 +15,7 @@ Version 0.01
 
 =cut
 
+our %abbreviations;
 our $VERSION = '0.01';
 
 =head1 SYNOPSIS
@@ -38,7 +39,9 @@ sub new {
 	return unless(defined($class));
 
 	my $data = get('https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json');
-	my %abbreviations = map { uc($_->{'full'}) => uc($_->{'canonical'}) } @{JSON->new()->utf8()->decode($data)};
+	unless(scalar keys(%abbreviations)) {
+		%abbreviations = map { uc($_->{'full'}) => uc($_->{'canonical'}) } @{JSON->new()->utf8()->decode($data)};
+	}
 
 	return bless {
 		table => \%abbreviations

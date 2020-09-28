@@ -1,4 +1,7 @@
 Revision history for Geo::Coder::Abbreviations
 
+0.02
+	Don't load the abbreviations table each time a new object is instatiated
+
 0.01	Mon Sep 28 12:58:05 EDT 2020
         First draft
