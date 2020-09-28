@@ -4,12 +4,11 @@ use ExtUtils::MakeMaker 6.64;	# 6.64 for TEST_REQUIRES
 use Getopt::Long;	# Technique inspired by IO::Lambda
 use IO::Socket::INET;
 
-my $online_tests;
-
-if($ENV{AUTHOR_TESTING}) {
-	$online_tests = are_online();
+if(online_tests()) {
+	open(my $enabled, '>', 't/online.enabled') || die "Can't create t/online.enabled $!";
+	close($enabled) || die "Can't create t/online.enabled $!";
 } else {
-	Getopt::Long::GetOptions('online-tests!' => \$online_tests);
+	unlink('t/online.enabled');
 }
 
 WriteMakefile(
@@ -33,7 +32,7 @@ WriteMakefile(
 	},
 	dist => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
 	clean => { FILES => 'Geo-Coder-Abbreviations-*' },
-	META_MERGE  => {
+	META_MERGE => {
 		'meta-spec' => { version => 2 },
 		resources => {
 			repository => {
@@ -46,7 +45,7 @@ WriteMakefile(
 	MIN_PERL_VERSION => '5.6.2'	# Probably would work, but never tested on earlier versions than this
 );
 
-sub are_online
+sub online_tests
 {
 	return 0 if($ENV{'NO_NETWORK_TESTING'});
 	return 0 if(!-t STDIN);
