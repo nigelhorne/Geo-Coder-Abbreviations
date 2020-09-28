@@ -16,10 +16,16 @@ One small function for now, I'll add others later.
 ## new
 
 Creates a Geo::Coder::Abbreviations object.
+It takes no arguments.
 
 ## abbreviate
 
-Abbreviate a text
+Abbreviate a Geo::Coder::Abbreviate;
+
+        use Geo::Coder::Abbreviate;
+
+        my $abbr = Geo::Coder::Abbreviate->new();
+        print $abbr->abbreviate('Road'), "\n";  # prints "RD'
 
 # SEE ALSO
 
@@ -58,11 +64,3 @@ You can also look for information at:
 Copyright 2020 Nigel Horne.
 
 This program is released under the following licence: GPL2
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 76:
-
-    '=item' outside of any '=over'

@@ -16,6 +16,7 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
+
 =head1 SYNOPSIS
 
 Provides an interface to https://github.com/mapbox/geocoder-abbreviations.
@@ -26,6 +27,7 @@ One small function for now, I'll add others later.
 =head2 new
 
 Creates a Geo::Coder::Abbreviations object.
+It takes no arguments.
 
 =cut
 
@@ -45,8 +47,12 @@ sub new {
 
 =head2 abbreviate
 
-Abbreviate a text
+Abbreviate a Geo::Coder::Abbreviate;
 
+	use Geo::Coder::Abbreviate;
+
+	my $abbr = Geo::Coder::Abbreviate->new();
+	print $abbr->abbreviate('Road'), "\n";	# prints "RD'
 =cut
 
 sub abbreviate {
@@ -72,6 +78,8 @@ You can find documentation for this module with the perldoc command.
     perldoc Geo::Coder::Abbreviations
 
 You can also look for information at:
+
+=over 4
 
 =item * RT: CPAN's request tracker
 
