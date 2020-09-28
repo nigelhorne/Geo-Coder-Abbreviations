@@ -49,9 +49,9 @@ sub new {
 
 Abbreviate a place.
 
-	use Geo::Coder::Abbreviate;
+	use Geo::Coder::Abbreviations;
 
-	my $abbr = Geo::Coder::Abbreviate->new();
+	my $abbr = Geo::Coder::Abbreviations->new();
 	print $abbr->abbreviate('Road'), "\n";	# prints 'RD'
 
 =cut
