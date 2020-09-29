@@ -12,6 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       PERL_MM_USE_DEFAULT: 1
+      OPENSSL_PREFIX: 'C:\Program Files\OpenSSL-Win64\'
     strategy:
       matrix:
         os: ['windows-latest']
