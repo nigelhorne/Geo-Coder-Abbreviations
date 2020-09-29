@@ -20,12 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Setup perl
-        run: |
-          choco install openssl
         uses: shogo82148/actions-setup-perl@v1
         with:
           perl-version: ${{ matrix.perl }}
-      - run: perl -V
+      - run: |
+          perl -V
+          choco install openssl
       - name: Install Dependencies
         run: |
           cpanm -qin File::Spec ExtUtils::MakeMaker
