@@ -29,6 +29,7 @@ WriteMakefile(
 	}, PREREQ_PM => {
 		'JSON' => 4.02,
 		'LWP::Simple' => 0,
+		'LWP::Protocol::https' => 0,
 	},
 	dist => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
 	clean => { FILES => 'Geo-Coder-Abbreviations-*' },
