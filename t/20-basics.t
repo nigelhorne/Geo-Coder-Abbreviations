@@ -12,8 +12,10 @@ BEGIN {
 NEW: {
 	SKIP: {
 		skip 'Test requires Internet access', 2 unless(-e 't/online.enabled');
-		my $abbr = new_ok('Geo::Coder::Abbreviations');
-
-		ok($abbr->abbreviate('Road') eq 'RD');
+		if(my $abbr = new_ok('Geo::Coder::Abbreviations')) {
+			ok($abbr->abbreviate('Road') eq 'RD');
+		} else {
+			skip "Couldn't instantiate class", 1;
+		}
 	}
 }
