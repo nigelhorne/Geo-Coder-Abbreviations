@@ -78,6 +78,9 @@ Nigel Horne, C<< <njh at bandsman.co.uk> >>
 
 =head1 BUGS
 
+If you give an an already abbreviated text, it returns undef.
+It would be better to return the given text.
+
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
