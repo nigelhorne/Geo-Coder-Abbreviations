@@ -43,7 +43,7 @@ sub new {
 	die unless(defined($data));
 
 	unless(scalar keys(%abbreviations)) {
-		%abbreviations = map { uc($_->{'full'}) => uc($_->{'canonical'}) } @{JSON->new()->utf8()->decode($data)};
+		%abbreviations = map { (defined($_->{'type'}) && ($_->{'type'} eq 'way')) ? (uc($_->{'full'}) => uc($_->{'canonical'})) : () } @{JSON->new()->utf8()->decode($data)};
 	}
 
 	return bless {
