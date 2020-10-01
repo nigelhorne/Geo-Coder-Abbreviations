@@ -1,6 +1,7 @@
 Revision history for Geo::Coder::Abbreviations
 
 0.02
+	Use less memory
 	Don't load the abbreviations table each time a new object is instatiated
 	Added LWP::Protocol::https as a PREREQ - RT#133445
 
