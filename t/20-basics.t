@@ -1,4 +1,4 @@
-#!perl -wT
+#!perl -w
 
 use strict;
 use warnings;
@@ -9,7 +9,7 @@ BEGIN {
 	use_ok('Geo::Coder::Abbreviations');
 }
 
-NEW: {
+BASICS: {
 	SKIP: {
 		skip 'Test requires Internet access', 2 unless(-e 't/online.enabled');
 		if(my $abbr = new_ok('Geo::Coder::Abbreviations')) {

@@ -29,6 +29,9 @@ One small function for now, I'll add others later.
 
 Creates a Geo::Coder::Abbreviations object.
 It takes no arguments.
+If you have L<HTTP::Cache::Transparent> installed, it will load much
+faster, otherwise it will download the database from the Internet
+when the class is first instatiated.
 
 =cut
 
@@ -39,6 +42,27 @@ sub new {
 	return unless(defined($class));
 
 	unless(scalar keys(%abbreviations)) {
+		if(eval { require HTTP::Cache::Transparent; }) {
+			require File::Spec;	# That should be installed
+
+			File::Spec->import();
+			HTTP::Cache::Transparent->import();
+
+			my $cachedir;
+			if(my $e = $ENV{'CACHEDIR'}) {
+				$cachedir = File::Spec->catfile($e, 'http-cache-transparent');
+			} else {
+				$cachedir = File::Spec->catfile(File::Spec->tmpdir(), 'cache', 'http-cache-transparent');
+			}
+
+			HTTP::Cache::Transparent::init({
+				BasePath => $cachedir,
+				# Verbose => $opts{'v'} ? 1 : 0,
+				NoUpdate => 60 * 60 * 24,
+				MaxAge => 30 * 24
+			}) || die "$0: $cachedir: $!";
+		}
+
 		my $data = get('https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json');
 
 		die unless(defined($data));
@@ -71,6 +95,7 @@ sub abbreviate {
 =head1 SEE ALSO
 
 L<https://github.com/mapbox/geocoder-abbreviations>
+L<HTTP::Cache::Transparent>
 
 =head1 AUTHOR
 

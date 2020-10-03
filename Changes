@@ -1,5 +1,8 @@
 Revision history for Geo::Coder::Abbreviations
 
+0.03
+	Use HTTP::Cache::Transparent if that has been installed
+
 0.02	Thu Oct  1 14:16:59 EDT 2020
 	Use less memory
 	Don't load the abbreviations table each time a new object is instatiated
