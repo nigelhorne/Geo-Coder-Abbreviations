@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::Most tests => 15;
+use Test::Most tests => 17;
 use Test::NoWarnings;
 
 BEGIN {
@@ -22,17 +22,24 @@ BASICS: {
 				'CONNECTICUT AVENUE' => 'CONNECTICUT AV',
 				'HOWARD AVENUE' => 'HOWARD AV',
 				'MAPLE AVENUE W' => 'MAPLE AV W',
-				'SW MACVICAR AVE' => 'SW MACVICAR AVE',	# FIXME: This is wrong, it should be AV to be consistent
-				'NORFOLK AVE' => 'NORFOLK AVE',
-				'CONNECTICUT AVE' => 'CONNECTICUT AVE',
-				'HOWARD AVE' => 'HOWARD AVE',
-				'MAPLE AVE W' => 'MAPLE AVE W',
+				'SW MACVICAR AVE' => 'SW MACVICAR AV',
+				'NORFOLK AVE' => 'NORFOLK AV',
+				'CONNECTICUT AVE' => 'CONNECTICUT AV',
+				'HOWARD AVE' => 'HOWARD AV',
+				'MAPLE AVE W' => 'MAPLE AV W',
+				'HIGH STREET' => 'HIGH ST',
+				'HIGH ST' => 'HIGH ST',
 			);
 
 			while ((my ($k, $v)) = each(%streets)) {
 				my $street = uc($k);
-				if($street =~ /(.+)\s+AVENUE\s+(.+)/) {
-					$street = "$1 AV $2";
+				if($street =~ /(.+)\s+(.+)\s+(.+)/) {
+					my $a;
+					if($a = $abbr->abbreviate($2)) {
+						$street = "$1 $a $3";
+					} elsif($a = $abbr->abbreviate($3)) {
+						$street = "$1 $2 $a";
+					}
 				} elsif($street =~ /(.+)\s(.+)$/) {
 					if(my $a = $abbr->abbreviate($2)) {
 						$street = "$1 $a";
@@ -44,8 +51,9 @@ BASICS: {
 			}
 		} elsif(defined($ENV{'AUTHOR_TESTING'})) {
 			fail('Test failed');
+			skip('Test failed', 15);
 		} else {
-			skip "Couldn't instantiate class", 12;
+			skip("Couldn't instantiate class", 16);
 		}
 	}
 }

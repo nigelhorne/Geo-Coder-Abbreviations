@@ -67,7 +67,16 @@ sub new {
 
 		die unless(defined($data));
 
-		%abbreviations = map { (defined($_->{'type'}) && ($_->{'type'} eq 'way')) ? (uc($_->{'full'}) => uc($_->{'canonical'})) : () } @{JSON->new()->utf8()->decode($data)};
+		%abbreviations = map {
+			my %rc = ();
+			if(defined($_->{'type'}) && ($_->{'type'} eq 'way')) {
+				foreach my $token(@{$_->{'tokens'}}) {
+					$rc{uc($token)} = uc($_->{'canonical'});
+				}
+			}
+			%rc;
+		} @{JSON->new()->utf8()->decode($data)};
+		# %abbreviations = map { (defined($_->{'type'}) && ($_->{'type'} eq 'way')) ? (uc($_->{'full'}) => uc($_->{'canonical'})) : () } @{JSON->new()->utf8()->decode($data)};
 	}
 
 	return bless {
@@ -83,6 +92,7 @@ Abbreviate a place.
 
     my $abbr = Geo::Coder::Abbreviations->new();
     print $abbr->abbreviate('Road'), "\n";	# prints 'RD'
+    print $abbr->abbreviate('RD'), "\n";	# prints 'RD'
 
 =cut
 
@@ -102,9 +112,6 @@ L<HTTP::Cache::Transparent>
 Nigel Horne, C<< <njh at bandsman.co.uk> >>
 
 =head1 BUGS
-
-If you give an an already abbreviated text, it returns undef.
-It would be better to return the given text.
 
 =head1 SUPPORT
 
