@@ -4,7 +4,7 @@ Geo::Coder::Abbreviations - Quick and Dirty Interface to https://github.com/mapb
 
 # VERSION
 
-Version 0.02
+Version 0.03
 
 # SYNOPSIS
 
@@ -29,6 +29,7 @@ Abbreviate a place.
 
     my $abbr = Geo::Coder::Abbreviations->new();
     print $abbr->abbreviate('Road'), "\n";      # prints 'RD'
+    print $abbr->abbreviate('RD'), "\n";        # prints 'RD'
 
 # SEE ALSO
 
@@ -40,9 +41,6 @@ Abbreviate a place.
 Nigel Horne, `<njh at bandsman.co.uk>`
 
 # BUGS
-
-If you give an an already abbreviated text, it returns undef.
-It would be better to return the given text.
 
 # SUPPORT
 

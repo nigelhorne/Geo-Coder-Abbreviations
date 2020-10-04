@@ -1,6 +1,6 @@
 Revision history for Geo::Coder::Abbreviations
 
-0.03
+0.03	Sun Oct  4 11:52:30 EDT 2020
 	Use HTTP::Cache::Transparent if that has been installed
 	Handle more abbreviations and when given an abbreviated argument
 
