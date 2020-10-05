@@ -29,8 +29,8 @@ One small function for now, I'll add others later.
 
 Creates a Geo::Coder::Abbreviations object.
 It takes no arguments.
-If you have L<HTTP::Cache::Transparent> installed, it will load much
-faster, otherwise it will download the database from the Internet
+If you have L<HTTP::Cache::Transparent> installed it will load much faster,
+otherwise it will download the database from the Internet
 when the class is first instatiated.
 
 =cut
