@@ -11,7 +11,7 @@ BEGIN {
 
 BASICS: {
 	SKIP: {
-		skip 'Test requires Internet access', 2 unless(-e 't/online.enabled');
+		skip 'Test requires Internet access', 15 unless(-e 't/online.enabled');
 		if(my $abbr = new_ok('Geo::Coder::Abbreviations')) {
 			ok($abbr->abbreviate('Road') eq 'RD');
 			ok($abbr->abbreviate('Avenue') eq 'AV');	# I think it should abbreviate to AVE
