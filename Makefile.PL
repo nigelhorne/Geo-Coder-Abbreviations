@@ -28,7 +28,7 @@ WriteMakefile(
 		# 'Test::Kwalitee' => 0,
 	}, PREREQ_PM => {
 		'JSON' => 4.02,
-		'LWP::Simple' => 0,
+		'LWP::Simple::WithCache' => 0,
 		'LWP::Protocol::https' => 0,
 	},
 	dist => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },

@@ -3,7 +3,7 @@ package Geo::Coder::Abbreviations;
 use warnings;
 use strict;
 use JSON;
-use LWP::Simple;
+use LWP::Simple::WithCache;
 
 =head1 NAME
 
@@ -63,7 +63,7 @@ sub new {
 			}) || die "$0: $cachedir: $!";
 		}
 
-		my $data = get('https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json');
+		my $data = LWP::Simple::WithCache::get('https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json');
 
 		die unless(defined($data));
 
