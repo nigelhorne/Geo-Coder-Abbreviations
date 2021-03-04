@@ -17,9 +17,9 @@ One small function for now, I'll add others later.
 
 Creates a Geo::Coder::Abbreviations object.
 It takes no arguments.
-If you have [HTTP::Cache::Transparent](https://metacpan.org/pod/HTTP%3A%3ACache%3A%3ATransparent) installed, it will load much
-faster, otherwise it will download the database from the Internet
-when the class is first instatiated.
+If you have [HTTP::Cache::Transparent](https://metacpan.org/pod/HTTP%3A%3ACache%3A%3ATransparent) installed it will load much faster,
+otherwise it will download the database from the Internet
+when the class is first instantiated.
 
 ## abbreviate
 
