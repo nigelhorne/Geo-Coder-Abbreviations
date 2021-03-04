@@ -40,6 +40,12 @@ WriteMakefile(
 				type => 'git',
 				url => 'git://github.com/nigelhorne/Geo-Coder-Abbreviations.git',
 				web => 'https://github.com/nigelhorne/Geo-Coder-Abbreviations',
+				repository => 'https://github.com/nigelhorne/Geo-Coder-Abbreviations',
+			}, bugtracker => {
+				# web => 'https://rt.cpan.org/Public/Dist/Display.html?Name=Geo-Coder-Abbreviations',
+				web => 'https://github.com/nigelhorne/Geo-Coder-Abbreviations/issues',
+				url => 'https://github.com/nigelhorne/Geo-Coder-Abbreviations/issues',
+				mailto => 'bug-Geo-Coder-Abbreviations@rt.cpan.org'
 			},
 		},
 	},

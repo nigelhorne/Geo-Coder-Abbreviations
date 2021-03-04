@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::Most tests => 18;
+use Test::Most tests => 21;
 use Test::NoWarnings;
 
 BEGIN {
@@ -11,7 +11,7 @@ BEGIN {
 
 BASICS: {
 	SKIP: {
-		skip 'Test requires Internet access', 16 unless(-e 't/online.enabled');
+		skip 'Test requires Internet access', 19 unless(-e 't/online.enabled');
 		if(my $abbr = new_ok('Geo::Coder::Abbreviations')) {
 			ok($abbr->abbreviate('Road') eq 'RD');
 			ok($abbr->abbreviate('Avenue') eq 'AV');	# I think it should abbreviate to AVE
@@ -50,11 +50,17 @@ BASICS: {
 				diag("$k: expected $v, got $street") if($street ne $v);
 				ok($street eq $v);
 			}
+
+			# Second and subsequent should not need to download the database
+			#	Verify that by checking in coverage tools
+			$abbr = new_ok('Geo::Coder::Abbreviations');
+			ok($abbr->abbreviate('Road') eq 'RD');
+			ok($abbr->abbreviate('Avenue') eq 'AV');
 		} elsif(defined($ENV{'AUTHOR_TESTING'})) {
 			fail('Test failed');
-			skip('Test failed', 16);
+			skip('Test failed', 19);
 		} else {
-			skip("Couldn't instantiate class", 16);
+			skip("Couldn't instantiate class", 19);
 		}
 	}
 }
