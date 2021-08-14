@@ -9,8 +9,10 @@ README.md
 t/00-load.t
 t/10-new.t
 t/abbreviations.t
+t/comment-spelling.t
 t/coverage.t
 t/dist.t
+t/eof.t
 t/eol.t
 t/kwalitee.t
 t/links.t
@@ -20,9 +22,9 @@ t/noopentickets.t
 t/noplan.t
 t/pod-cm.t
 t/pod.t
+t/pod_spelling.t
 t/port.t
 t/snippets.t
-t/spelling.t
 t/strict.t
 t/unused.t
 t/vars.t

@@ -113,6 +113,9 @@ Nigel Horne, C<< <njh at bandsman.co.uk> >>
 
 =head1 BUGS
 
+You may need to ensure you don't translate "Cross Street" to "X ST".
+See t/abbreviations.t.
+
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
@@ -141,7 +144,7 @@ L<http://search.cpan.org/dist/Geo-Coder-Abbreviations/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2020 Nigel Horne.
+Copyright 2021 Nigel Horne.
 
 This program is released under the following licence: GPL2
 
