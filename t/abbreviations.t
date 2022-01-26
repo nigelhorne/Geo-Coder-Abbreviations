@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::Most tests => 21;
+use Test::Most tests => 22;
 use Test::NoWarnings;
 
 BEGIN {
@@ -11,7 +11,7 @@ BEGIN {
 
 BASICS: {
 	SKIP: {
-		skip 'Test requires Internet access', 19 unless(-e 't/online.enabled');
+		skip 'Test requires Internet access', 20 unless(-e 't/online.enabled');
 		if(my $abbr = new_ok('Geo::Coder::Abbreviations')) {
 			ok($abbr->abbreviate('Road') eq 'RD');
 			ok($abbr->abbreviate('Avenue') eq 'AV');	# I think it should abbreviate to AVE
@@ -30,13 +30,14 @@ BASICS: {
 				'HIGH STREET' => 'HIGH ST',
 				'HIGH ST' => 'HIGH ST',
 				'8600 ROCKVILLE PIKE' => '8600 ROCKVILLE PK',
+				'39 CROSS STREET' => '39 CROSS ST',	# Not 39 X ST
 			);
 
 			while ((my ($k, $v)) = each(%streets)) {
 				my $street = uc($k);
 				if($street =~ /(.+)\s+(.+)\s+(.+)/) {
 					my $a;
-					if($a = $abbr->abbreviate($2)) {
+					if((lc($2) ne 'cross') && ($a = $abbr->abbreviate($2))) {
 						$street = "$1 $a $3";
 					} elsif($a = $abbr->abbreviate($3)) {
 						$street = "$1 $2 $a";
@@ -58,9 +59,9 @@ BASICS: {
 			ok($abbr->abbreviate('Avenue') eq 'AV');
 		} elsif(defined($ENV{'AUTHOR_TESTING'})) {
 			fail('Test failed');
-			skip('Test failed', 19);
+			skip('Test failed', 20);
 		} else {
-			skip("Couldn't instantiate class", 19);
+			skip("Couldn't instantiate class", 20);
 		}
 	}
 }
