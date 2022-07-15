@@ -65,7 +65,7 @@ sub new {
 
 		my $data = LWP::Simple::WithCache::get('https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json');
 
-		die unless(defined($data));
+		die 'error downloading from https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json' unless(defined($data));
 
 		%abbreviations = map {
 			my %rc = ();
@@ -106,6 +106,7 @@ sub abbreviate {
 
 L<https://github.com/mapbox/geocoder-abbreviations>
 L<HTTP::Cache::Transparent>
+L<https://www.mapbox.com/>
 
 =head1 AUTHOR
 
@@ -144,7 +145,7 @@ L<http://search.cpan.org/dist/Geo-Coder-Abbreviations/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2021 Nigel Horne.
+Copyright 2021-2022 Nigel Horne.
 
 This program is released under the following licence: GPL2
 

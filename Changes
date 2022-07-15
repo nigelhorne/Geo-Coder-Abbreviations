@@ -2,6 +2,7 @@ Revision history for Geo::Coder::Abbreviations
 
 0.05
 	Use LWP::Simple::WithCache instead of LWP::Simple
+	Better die message when the file can't be downloaded
 
 0.04	Sun Oct  4 20:41:12 EDT 2020
 	Fix skipped count when not testing on the Internet
