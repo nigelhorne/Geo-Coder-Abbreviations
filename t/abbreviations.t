@@ -11,10 +11,11 @@ BEGIN {
 
 BASICS: {
 	SKIP: {
-		skip 'Test requires Internet access', 20 unless(-e 't/online.enabled');
+		skip('Test requires Internet access', 20) unless(-e 't/online.enabled');
 		if(my $abbr = new_ok('Geo::Coder::Abbreviations')) {
-			ok($abbr->abbreviate('Road') eq 'RD');
-			ok($abbr->abbreviate('Avenue') eq 'AV');	# I think it should abbreviate to AVE
+			cmp_ok($abbr->abbreviate('Road'), 'eq', 'RD', 'Road => RD');
+			# I think it should abbreviate to AVE
+			cmp_ok($abbr->abbreviate('Avenue'), 'eq', 'AV', 'Avenue => AV');
 
 			my %streets = (
 				'SW MACVICAR AVENUE' => 'SW MACVICAR AV',
@@ -48,15 +49,14 @@ BASICS: {
 					}
 				}
 				# $street =~ s/^0+//;	# Turn 04th St into 4th St
-				diag("$k: expected $v, got $street") if($street ne $v);
-				ok($street eq $v);
+				cmp_ok($street, 'eq', $v, "$k => $v (got $street)");
 			}
 
 			# Second and subsequent should not need to download the database
 			#	Verify that by checking in coverage tools
 			$abbr = new_ok('Geo::Coder::Abbreviations');
-			ok($abbr->abbreviate('Road') eq 'RD');
-			ok($abbr->abbreviate('Avenue') eq 'AV');
+			cmp_ok($abbr->abbreviate('Road'), 'eq', 'RD', 'Road => RD');
+			cmp_ok($abbr->abbreviate('Avenue'), 'eq', 'AV', 'Avenue => AV');
 		} elsif(defined($ENV{'AUTHOR_TESTING'})) {
 			fail('Test failed');
 			skip('Test failed', 20);
