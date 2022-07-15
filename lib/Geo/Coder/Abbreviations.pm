@@ -63,6 +63,7 @@ sub new {
 			}) || die "$0: $cachedir: $!";
 		}
 
+		# TODO:	Support other languages
 		my $data = LWP::Simple::WithCache::get('https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json');
 
 		if(!defined($data)) {
