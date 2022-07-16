@@ -17,6 +17,9 @@ Version 0.04
 
 our %abbreviations;
 our $VERSION = '0.04';
+# This is giving 404 errors at the moment
+# our location = 'https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json';
+use constant LOCATION => 'https://raw.githubusercontent.com/allison-strandberg/geocoder-abbreviations/master/tokens/en.json';
 
 =head1 SYNOPSIS
 
@@ -64,10 +67,10 @@ sub new {
 		}
 
 		# TODO:	Support other languages
-		my $data = LWP::Simple::WithCache::get('https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json');
+		my $data = LWP::Simple::WithCache::get(LOCATION);
 
 		if(!defined($data)) {
-			# die 'error downloading from https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json';
+			# die 'error downloading from ', LOCATION;
 			$data = join('', grep(!/^\s*(#|$)/, <DATA>));
 		}
 		%abbreviations = map {
