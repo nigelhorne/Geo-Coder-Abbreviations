@@ -4,7 +4,7 @@ Geo::Coder::Abbreviations - Quick and Dirty Interface to https://github.com/mapb
 
 # VERSION
 
-Version 0.04
+Version 0.05
 
 # SYNOPSIS
 
@@ -35,12 +35,16 @@ Abbreviate a place.
 
 [https://github.com/mapbox/geocoder-abbreviations](https://github.com/mapbox/geocoder-abbreviations)
 [HTTP::Cache::Transparent](https://metacpan.org/pod/HTTP%3A%3ACache%3A%3ATransparent)
+[https://www.mapbox.com/](https://www.mapbox.com/)
 
 # AUTHOR
 
 Nigel Horne, `<njh at bandsman.co.uk>`
 
 # BUGS
+
+You may need to ensure you don't translate "Cross Street" to "X ST".
+See t/abbreviations.t.
 
 # SUPPORT
 
@@ -66,6 +70,6 @@ You can also look for information at:
 
 # LICENSE AND COPYRIGHT
 
-Copyright 2020 Nigel Horne.
+Copyright 2020-2022 Nigel Horne.
 
 This program is released under the following licence: GPL2

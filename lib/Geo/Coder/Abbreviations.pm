@@ -11,12 +11,12 @@ Geo::Coder::Abbreviations - Quick and Dirty Interface to https://github.com/mapb
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
 our %abbreviations;
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 # This is giving 404 errors at the moment
 # our location = 'https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json';
 use constant LOCATION => 'https://raw.githubusercontent.com/allison-strandberg/geocoder-abbreviations/master/tokens/en.json';
@@ -152,7 +152,7 @@ L<http://search.cpan.org/dist/Geo-Coder-Abbreviations/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2021-2022 Nigel Horne.
+Copyright 2020-2022 Nigel Horne.
 
 This program is released under the following licence: GPL2
 
