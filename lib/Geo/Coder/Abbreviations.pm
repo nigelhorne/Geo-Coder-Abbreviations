@@ -18,6 +18,7 @@ Version 0.05
 our %abbreviations;
 our $VERSION = '0.05';
 # This is giving 404 errors at the moment
+#	https://github.com/mapbox/mapbox-java/issues/1460
 # our location = 'https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json';
 use constant LOCATION => 'https://raw.githubusercontent.com/allison-strandberg/geocoder-abbreviations/master/tokens/en.json';
 
