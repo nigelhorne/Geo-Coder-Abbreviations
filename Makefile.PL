@@ -27,7 +27,7 @@ WriteMakefile(
 		'Test::NoWarnings' => 0,
 		# 'Test::Kwalitee' => 0,
 	}, PREREQ_PM => {
-		'JSON' => 4.02,
+		'JSON::MaybeXS' => 0,
 		'LWP::Simple::WithCache' => 0,
 		'LWP::Protocol::https' => 0,
 	},

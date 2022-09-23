@@ -1,5 +1,8 @@
 Revision history for Geo::Coder::Abbreviations
 
+0.06
+	Use JSON::MaybeXS instead of JSON
+
 0.05	Fri Jul 22 10:05:38 EDT 2022
 	Use LWP::Simple::WithCache instead of LWP::Simple
 	Better die message when the file can't be downloaded

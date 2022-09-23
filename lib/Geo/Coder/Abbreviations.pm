@@ -2,7 +2,7 @@ package Geo::Coder::Abbreviations;
 
 use warnings;
 use strict;
-use JSON;
+use JSON::MaybeXS;
 use LWP::Simple::WithCache;
 
 =head1 NAME
