@@ -82,9 +82,9 @@ sub new {
 				}
 			}
 			%rc;
-		} @{JSON->new()->utf8()->decode($data)};
+		} @{JSON::MaybeXS->new()->utf8()->decode($data)};
 
-		# %abbreviations = map { (defined($_->{'type'}) && ($_->{'type'} eq 'way')) ? (uc($_->{'full'}) => uc($_->{'canonical'})) : () } @{JSON->new()->utf8()->decode($data)};
+		# %abbreviations = map { (defined($_->{'type'}) && ($_->{'type'} eq 'way')) ? (uc($_->{'full'}) => uc($_->{'canonical'})) : () } @{JSON::MaybeXS->new()->utf8()->decode($data)};
 	}
 
 	return bless {
