@@ -43,7 +43,18 @@ sub new {
 	my $proto = shift;
 	my $class = ref($proto) || $proto;
 
-	return unless(defined($class));
+	if(!defined($class)) {
+		# Using CGI::Info->new(), not CGI::Info::new()
+		# carp(__PACKAGE__, ' use ->new() not ::new() to instantiate');
+		# return;
+
+		# FIXME: this only works when no arguments are given
+		$class = __PACKAGE__;
+	} elsif(ref($class)) {
+		# clone the given object
+		# return bless { %{$class}, %args }, ref($class);
+		return bless { %{$class} }, ref($class);
+	}
 
 	unless(scalar keys(%abbreviations)) {
 		if(eval { require HTTP::Cache::Transparent; }) {
@@ -139,10 +150,6 @@ You can also look for information at:
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Geo-Coder-Abbreviations>
 
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Geo-Coder-Abbreviations>
-
 =item * Search CPAN
 
 L<http://search.cpan.org/dist/Geo-Coder-Abbreviations/>
@@ -153,7 +160,7 @@ L<http://search.cpan.org/dist/Geo-Coder-Abbreviations/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2020-2022 Nigel Horne.
+Copyright 2020-2023 Nigel Horne.
 
 This program is released under the following licence: GPL2
 
