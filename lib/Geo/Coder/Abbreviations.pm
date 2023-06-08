@@ -11,12 +11,13 @@ Geo::Coder::Abbreviations - Quick and Dirty Interface to https://github.com/mapb
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
 our %abbreviations;
-our $VERSION = '0.05';
+our $VERSION = '0.06';
+
 # This is giving 404 errors at the moment
 #	https://github.com/mapbox/mapbox-java/issues/1460
 # our location = 'https://raw.githubusercontent.com/mapbox/geocoder-abbreviations/master/tokens/en.json';
@@ -156,7 +157,7 @@ L<http://search.cpan.org/dist/Geo-Coder-Abbreviations/>
 
 =back
 
-=head1 ACKNOWLEDGEMENTS
+=head1 ACKNOWLEDGMENTS
 
 =head1 LICENSE AND COPYRIGHT
 
