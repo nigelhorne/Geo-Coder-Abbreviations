@@ -30,7 +30,8 @@ jobs:
           # cpanm -iqn ExtUtils::MakeMaker File::Spec Test::Most
           # cpanm -iqn Sub::Identify Log::Any
           # cpanm -iqn Sub::Private LWP::UserAgent Test::CleanNamespaces
-          cpanm -iqn HTML::Entities HTTP::Headers HTTP::Request
+          cpanm -iv HTML::Entities
+          cpanm -iqn HTTP::Headers HTTP::Request
           cpanm -iqn LWP::UserAgent LWP::Simple::WithCache
           cd $RUNNER_WORKSPACE
           git clone --recurse-submodules $GITHUB_SERVER_URL/$GITHUB_REPOSITORY.git
