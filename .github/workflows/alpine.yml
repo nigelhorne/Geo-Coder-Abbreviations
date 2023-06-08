@@ -24,7 +24,7 @@ jobs:
           apk update
           apk upgrade
           apk add perl perl-dev perl-app-cpanminus make gzip git gcc
-          apk add perl-test-most perl-test-nowarnings
+          apk add linux-headers perl-test-most perl-test-nowarnings
           apk add perl-getopt-long perl-clone perl-digest-sha1 perl-cache-cache
           perl -V
           # cpanm -iqn ExtUtils::MakeMaker File::Spec Test::Most
