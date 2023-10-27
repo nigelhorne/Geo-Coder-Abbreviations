@@ -45,7 +45,7 @@ sub new {
 	my $class = ref($proto) || $proto;
 
 	if(!defined($class)) {
-		# Using CGI::Info->new(), not CGI::Info::new()
+		# Using Geo::Coder::Abbreviations->new(), not Geo::Coder::Abbreviations::new()
 		# carp(__PACKAGE__, ' use ->new() not ::new() to instantiate');
 		# return;
 
