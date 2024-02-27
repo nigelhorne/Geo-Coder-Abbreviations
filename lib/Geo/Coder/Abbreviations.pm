@@ -124,7 +124,7 @@ sub abbreviate {
 
 =head2 normalize
 
-Normalize and abbbreviate street names - useful for comparisons
+Normalize and abbreviate street names - useful for comparisons
 
 =cut
 
