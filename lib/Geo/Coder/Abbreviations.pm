@@ -122,6 +122,34 @@ sub abbreviate {
 	return $self->{'table'}->{uc(shift)};
 }
 
+=head2 normalize
+
+Normalize and abbbreviate street names - useful for comparisons
+
+=cut
+
+sub normalize
+{
+	my $self = shift;
+        my $street = shift;
+
+        $street = uc($street);
+        if($street =~ /(.+)\s+(.+)\s+(.+)/) {
+                my $a;
+                if((lc($2) ne 'cross') && ($a = $self->abbreviate($2))) {
+                        $street = "$1 $a $3";
+                } elsif($a = $self->abbreviate($3)) {
+                        $street = "$1 $2 $a";
+                }
+        } elsif($street =~ /(.+)\s(.+)$/) {
+                if(my $a = $self->abbreviate($2)) {
+                        $street = "$1 $a";
+                }
+        }
+        $street =~ s/^0+//;     # Turn 04th St into 4th St
+        return $street;
+}
+
 =head1 SEE ALSO
 
 L<https://github.com/mapbox/geocoder-abbreviations>
@@ -161,7 +189,7 @@ L<http://search.cpan.org/dist/Geo-Coder-Abbreviations/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2020-2023 Nigel Horne.
+Copyright 2020-2024 Nigel Horne.
 
 This program is released under the following licence: GPL2
 

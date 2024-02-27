@@ -20,6 +20,7 @@ t/metrics.t
 t/no404s.t
 t/noopentickets.t
 t/noplan.t
+t/normalize.t
 t/pod-cm.t
 t/pod-synopsis.t
 t/pod.t
