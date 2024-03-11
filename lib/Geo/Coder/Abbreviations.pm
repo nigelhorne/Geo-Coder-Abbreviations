@@ -11,12 +11,12 @@ Geo::Coder::Abbreviations - Quick and Dirty Interface to https://github.com/mapb
 
 =head1 VERSION
 
-Version 0.06
+Version 0.07
 
 =cut
 
 our %abbreviations;
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 # This is giving 404 errors at the moment
 #	https://github.com/mapbox/mapbox-java/issues/1460
@@ -65,10 +65,12 @@ sub new {
 			HTTP::Cache::Transparent->import();
 
 			my $cachedir;
-			if(my $e = $ENV{'CACHEDIR'}) {
+			if(my $e = $ENV{'CACHE_DIR'}) {
+				mkdir $cachedir, 02700 if(!-d $cachedir);
 				$cachedir = File::Spec->catfile($e, 'http-cache-transparent');
 			} else {
-				$cachedir = File::Spec->catfile(File::Spec->tmpdir(), 'cache', 'http-cache-transparent');
+				# $cachedir = File::Spec->catfile(File::Spec->tmpdir(), 'cache', 'http-cache-transparent');
+				$cachedir = File::Spec->catfile(File::HomeDir->my_home(), '.cache', 'http-cache-transparent');
 			}
 
 			HTTP::Cache::Transparent::init({
