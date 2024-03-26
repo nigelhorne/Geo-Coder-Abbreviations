@@ -64,21 +64,21 @@ sub new {
 			File::Spec->import();
 			HTTP::Cache::Transparent->import();
 
-			my $cachedir;
-			if(my $e = $ENV{'CACHE_DIR'}) {
-				mkdir $cachedir, 02700 if(!-d $cachedir);
-				$cachedir = File::Spec->catfile($e, 'http-cache-transparent');
+			my $cache_dir;
+			if($cache_dir = $ENV{'CACHE_DIR'}) {
+				mkdir $cache_dir, 02700 if(!-d $cache_dir);
+				$cache_dir = File::Spec->catfile($cache_dir, 'http-cache-transparent');
 			} else {
-				# $cachedir = File::Spec->catfile(File::Spec->tmpdir(), 'cache', 'http-cache-transparent');
-				$cachedir = File::Spec->catfile(File::HomeDir->my_home(), '.cache', 'http-cache-transparent');
+				# $cache_dir = File::Spec->catfile(File::Spec->tmpdir(), 'cache', 'http-cache-transparent');
+				$cache_dir = File::Spec->catfile(File::HomeDir->my_home(), '.cache', 'http-cache-transparent');
 			}
 
 			HTTP::Cache::Transparent::init({
-				BasePath => $cachedir,
+				BasePath => $cache_dir,
 				# Verbose => $opts{'v'} ? 1 : 0,
 				NoUpdate => 60 * 60 * 24,
 				MaxAge => 30 * 24
-			}) || die "$0: $cachedir: $!";
+			}) || die "$0: $cache_dir $!";
 		}
 
 		# TODO:	Support other languages
