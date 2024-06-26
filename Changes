@@ -1,7 +1,7 @@
 Revision history for Geo::Coder::Abbreviations
 
 0.08
-	Use CACHE_DIR instead of CACHEDIR
+	Allow CACHE_DIR as well as CACHEDIR
 	Default cache location is now ~/.cache instead of /tmp/cache
 
 0.07	Tue Feb 27 11:07:01 EST 2024

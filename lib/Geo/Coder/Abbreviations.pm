@@ -65,7 +65,7 @@ sub new {
 			HTTP::Cache::Transparent->import();
 
 			my $cache_dir;
-			if($cache_dir = $ENV{'CACHE_DIR'}) {
+			if($cache_dir = ($ENV{'CACHE_DIR'} || $ENV{'CACHEDIR'})) {
 				mkdir $cache_dir, 02700 if(!-d $cache_dir);
 				$cache_dir = File::Spec->catfile($cache_dir, 'http-cache-transparent');
 			} else {
