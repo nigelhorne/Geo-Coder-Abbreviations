@@ -165,23 +165,23 @@ sub normalize
 		$params{'street'} = shift;
 	}
 
-        my $street = $params{'street'};
+	my $street = $params{'street'};
 
-        $street = uc($street);
-        if($street =~ /(.+)\s+(.+)\s+(.+)/) {
-                my $a;
-                if((lc($2) ne 'cross') && ($a = $self->abbreviate($2))) {
-                        $street = "$1 $a $3";
-                } elsif($a = $self->abbreviate($3)) {
-                        $street = "$1 $2 $a";
-                }
-        } elsif($street =~ /(.+)\s(.+)$/) {
-                if(my $a = $self->abbreviate($2)) {
-                        $street = "$1 $a";
-                }
-        }
-        $street =~ s/^0+//;     # Turn 04th St into 4th St
-        return $street;
+	$street = uc($street);
+	if($street =~ /(.+)\s+(.+)\s+(.+)/) {
+		my $a;
+		if((lc($2) ne 'cross') && ($a = $self->abbreviate($2))) {
+			$street = "$1 $a $3";
+		} elsif($a = $self->abbreviate($3)) {
+			$street = "$1 $2 $a";
+		}
+	} elsif($street =~ /(.+)\s(.+)$/) {
+		if(my $a = $self->abbreviate($2)) {
+			$street = "$1 $a";
+		}
+	}
+	$street =~ s/^0+//;     # Turn 04th St into 4th St
+	return $street;
 }
 
 =head1 SEE ALSO
