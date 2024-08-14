@@ -1,3 +1,5 @@
+#!/usr/bin/env perl
+
 use strict;
 use warnings;
 use ExtUtils::MakeMaker 6.64;	# 6.64 for TEST_REQUIRES
@@ -7,12 +9,12 @@ use IO::Socket::INET;
 my $online_tests;
 
 if($ENV{'AUTHOR_TESTING'}) {
-	$online_tests = online_tests();
+	$online_tests = are_online();
 } else {
 	Getopt::Long::GetOptions('online-tests!' => \$online_tests);
 
 	if(!defined($online_tests)) {
-		$online_tests = online_tests();
+		$online_tests = are_online();
 	}
 	if(!$online_tests) {
 		print "On-line tests have been disabled\n";
@@ -68,17 +70,14 @@ WriteMakefile(
 	MIN_PERL_VERSION => '5.6.2'	# Probably would work, but never tested on earlier versions than this
 );
 
-sub online_tests
+sub are_online
 {
-	return 0 if($ENV{'NO_NETWORK_TESTING'} || $ENV{'TRAVIS_PERL_VERSION'});
-	return 0 if($ENV{'AUTOMATED_TESTING'});
-	return 0 if(!-t STDIN);
+	return 0 if($ENV{'NO_NETWORK_TESTING'} || $ENV{'TRAVIS_PERL_VERSION'}) || $ENV{'AUTOMATED_TESTING'} || (!-t STDIN);
 
-	my $s = IO::Socket::INET->new(
+	if(my $s = IO::Socket::INET->new(
 		PeerAddr => 'raw.githubusercontent.com:443',
 		Timeout => 5
-	);
-	if($s) {
+	)) {
 		if($ENV{'PERL_MM_USE_DEFAULT'}) {
 			close($s);
 			return 1;
