@@ -48,8 +48,7 @@ WriteMakefile(
 		'JSON::MaybeXS' => 0,
 		'LWP::Simple::WithCache' => 0,
 		'LWP::Protocol::https' => 0,
-	},
-	dist => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+	}, dist => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
 	clean => { FILES => 'Geo-Coder-Abbreviations-*' },
 	META_MERGE => {
 		'meta-spec' => { version => 2 },
