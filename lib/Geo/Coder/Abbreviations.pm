@@ -11,12 +11,12 @@ Geo::Coder::Abbreviations - Quick and Dirty Interface to https://github.com/mapb
 
 =head1 VERSION
 
-Version 0.08
+Version 0.09
 
 =cut
 
 our %abbreviations;
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 # This is giving 404 errors at the moment
 #	https://github.com/mapbox/mapbox-java/issues/1460
