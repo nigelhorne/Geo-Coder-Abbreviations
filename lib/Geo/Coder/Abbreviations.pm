@@ -40,9 +40,9 @@ when the class is first instantiated.
 
 =cut
 
-sub new {
-	my $proto = shift;
-	my $class = ref($proto) || $proto;
+sub new
+{
+	my $class = shift;
 
 	if(!defined($class)) {
 		# Using Geo::Coder::Abbreviations->new(), not Geo::Coder::Abbreviations::new()
@@ -189,6 +189,7 @@ sub normalize
 L<https://github.com/mapbox/geocoder-abbreviations>
 L<HTTP::Cache::Transparent>
 L<https://www.mapbox.com/>
+L<https://github.com/geocoding/geocoder-abbreviations>
 
 =head1 AUTHOR
 

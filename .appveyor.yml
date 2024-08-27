@@ -1,3 +1,4 @@
+---
 version: 1.0.{build}
 
 image:
@@ -29,13 +30,13 @@ install:
   # - cmd: cd C:\projects\%APPVEYOR_PROJECT_NAME%
   # Currently fails on http://apt.postgresql.org/pub/repos/apt bionic-pgdg Release
   # - sh: sudo apt update -q -y
-  - sh: sudo DEBIAN_FRONTEND=noninteractive apt-get install -q -y --force-yes build-essential git libssl-dev perl
+  - sh: sudo DEBIAN_FRONTEND=noninteractive apt install -q -y --force-yes build-essential git libssl-dev perl
   - sh: export PATH=/home/appveyor/perl5/bin:$PATH
   - perl -V
   - cmd: mkdir %APPVEYOR_BUILD_FOLDER%\tmp
   - cmd: set TMPDIR=%APPVEYOR_BUILD_FOLDER%\tmp
   - cpan App::cpanminus
-  - cmd: cpanm -qin --showdeps --with-develop --with-suggests . | findstr /v "^perl\>" | cpanm -n
+  - cmd: cpanm -q --showdeps --with-develop --with-suggests . | findstr /v "^perl\>" | cpanm -qin --skip-satisfied
   - cpanm -qin HTTP::Cache::Transparent
   - cpanm -qin --installdeps .
   - cmd: 'echo End install at: & time /t'
