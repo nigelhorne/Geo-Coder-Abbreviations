@@ -10,7 +10,6 @@ t/00-load.t
 t/10-new.t
 t/abbreviations.t
 t/comment-spelling.t
-t/coverage.t
 t/dist.t
 t/eof.t
 t/eol.t
@@ -22,6 +21,7 @@ t/noopentickets.t
 t/noplan.t
 t/normalize.t
 t/pod-cm.t
+t/pod-coverage.t
 t/pod-synopsis.t
 t/pod.t
 t/pod_spelling.t
