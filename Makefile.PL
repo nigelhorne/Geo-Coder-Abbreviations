@@ -28,6 +28,15 @@ if($online_tests) {
 	unlink('t/online.enabled');
 }
 
+my $dist = {
+	COMPRESS => 'gzip -9f',
+	SUFFIX => 'gz'
+};
+
+if($^O eq 'darwin') {
+	$dist->{'TAR'} = 'gtar';
+}
+
 WriteMakefile(
 	NAME	=> 'Geo::Coder::Abbreviations',
 	AUTHOR	=> q{Nigel Horne <njh@bandsman.co.uk>},
@@ -48,7 +57,7 @@ WriteMakefile(
 		'JSON::MaybeXS' => 0,
 		'LWP::Simple::WithCache' => 0,
 		'LWP::Protocol::https' => 0,
-	}, dist => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+	}, dist => $dist,
 	clean => { FILES => 'Geo-Coder-Abbreviations-*' },
 	META_MERGE => {
 		'meta-spec' => { version => 2 },
