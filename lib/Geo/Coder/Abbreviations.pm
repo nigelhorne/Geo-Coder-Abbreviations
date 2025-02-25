@@ -202,6 +202,8 @@ See t/abbreviations.t.
 
 =head1 SUPPORT
 
+This module is provided as-is without any warranty.
+
 You can find documentation for this module with the perldoc command.
 
     perldoc Geo::Coder::Abbreviations
@@ -224,7 +226,7 @@ L<http://search.cpan.org/dist/Geo-Coder-Abbreviations/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright 2020-2024 Nigel Horne.
+Copyright 2020-2025 Nigel Horne.
 
 This program is released under the following licence: GPL2
 

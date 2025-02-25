@@ -46,6 +46,7 @@ Can be run as a class method
 [https://github.com/mapbox/geocoder-abbreviations](https://github.com/mapbox/geocoder-abbreviations)
 [HTTP::Cache::Transparent](https://metacpan.org/pod/HTTP%3A%3ACache%3A%3ATransparent)
 [https://www.mapbox.com/](https://www.mapbox.com/)
+[https://github.com/geocoding/geocoder-abbreviations](https://github.com/geocoding/geocoder-abbreviations)
 
 # AUTHOR
 
@@ -57,6 +58,8 @@ You may need to ensure you don't translate "Cross Street" to "X ST".
 See t/abbreviations.t.
 
 # SUPPORT
+
+This module is provided as-is without any warranty.
 
 You can find documentation for this module with the perldoc command.
 
@@ -76,6 +79,6 @@ You can also look for information at:
 
 # LICENSE AND COPYRIGHT
 
-Copyright 2020-2024 Nigel Horne.
+Copyright 2020-2025 Nigel Horne.
 
 This program is released under the following licence: GPL2
