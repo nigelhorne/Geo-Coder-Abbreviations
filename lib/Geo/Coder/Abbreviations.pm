@@ -15,7 +15,8 @@ Version 0.09
 
 =cut
 
-our %abbreviations;
+our %abbreviations;	# Maps from full to abbreviated e.g. $abbreviations{'Road'} = 'RD';
+
 our $VERSION = '0.09';
 
 # This is giving 404 errors at the moment
@@ -132,7 +133,7 @@ Normalize and abbreviate street names - useful for comparisons
 
 Can be run as a class method
 
-    print Geo::Coder::Abbreviations('1600 Pennsylvania Avenue NW'), "\n";	# prints '1600 Pennsylvia Ave NW'
+    print Geo::Coder::Abbreviations('1600 Pennsylvania Avenue NW'), "\n";	# prints '1600 Pennsylvia Av NW'
 
 =cut
 
