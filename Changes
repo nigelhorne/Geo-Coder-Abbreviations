@@ -1,5 +1,8 @@
 Revision history for Geo::Coder::Abbreviations
 
+0.10
+	Fix https://www.cpantesters.org/cpan/report/89ad6b5c-5a79-11ef-ada9-33ec6d8775ea
+
 0.09	Tue Aug 13 21:14:53 EDT 2024
 	normalize() now has a number of APIs - whichever the caller wishes to use
 

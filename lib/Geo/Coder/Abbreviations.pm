@@ -66,13 +66,14 @@ sub new
 			HTTP::Cache::Transparent->import();
 
 			my $cache_dir;
-			if($cache_dir = ($ENV{'CACHE_DIR'} || $ENV{'CACHEDIR'})) {
-				mkdir $cache_dir, 02700 if(!-d $cache_dir);
-				$cache_dir = File::Spec->catfile($cache_dir, 'http-cache-transparent');
-			} else {
+			$cache_dir = ($ENV{'CACHE_DIR'} || $ENV{'CACHEDIR'});
+			if(!defined($cache_dir)) {
 				# $cache_dir = File::Spec->catfile(File::Spec->tmpdir(), 'cache', 'http-cache-transparent');
-				$cache_dir = File::Spec->catfile(File::HomeDir->my_home(), '.cache', 'http-cache-transparent');
+				$cache_dir = File::Spec->catfile(File::HomeDir->my_home(), '.cache');
 			}
+			mkdir $cache_dir, 02700 if(!-d $cache_dir);
+			$cache_dir = File::Spec->catfile($cache_dir, 'http-cache-transparent');
+			mkdir $cache_dir, 02700 if(!-d $cache_dir);
 
 			HTTP::Cache::Transparent::init({
 				BasePath => $cache_dir,
