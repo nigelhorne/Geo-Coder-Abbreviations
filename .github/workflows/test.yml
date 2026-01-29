@@ -1,0 +1,40 @@
+---
+# See https://github.com/actions/virtual-environments
+# https://github.com/marketplace/actions/setup-perl-environment
+
+name: Test Code
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - '*'
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    env:
+      NO_NETWORK_TESTING: 1
+      PERL_MM_USE_DEFAULT: 1
+    strategy:
+      matrix:
+        os: ['macos-latest', 'ubuntu-latest']
+        perl: ['5.30', '5.28']
+    name: Perl ${{ matrix.perl }} on ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Setup perl
+        uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: ${{ matrix.perl }}
+      - run: perl -V
+      - name: Install Dependencies
+        run: |
+          cpanm -qin File::Spec ExtUtils::MakeMaker
+          cpanm -qin --skip-satisfied Test::Pod::Spelling::CommonMistakes Test::Portability::Files Test::Pod::Coverage HTTP::Cache::Transparent
+          cpanm -iq --installdeps --notest .
+      - name: Run Tests
+        run: prove -l t

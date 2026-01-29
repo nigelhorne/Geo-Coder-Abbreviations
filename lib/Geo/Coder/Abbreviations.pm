@@ -169,6 +169,10 @@ sub normalize
 
 	my $street = $params{'street'};
 
+	if(!defined($street)) {
+		Carp::croak('Usage: ', __PACKAGE__, '::normalize(street => $street)');
+	}
+
 	$street = uc($street);
 	if($street =~ /(.+)\s+(.+)\s+(.+)/) {
 		my $a;
