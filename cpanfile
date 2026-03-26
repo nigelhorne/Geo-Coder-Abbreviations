@@ -8,7 +8,6 @@ requires 'LWP::Simple::WithCache';
 
 on 'test' => sub {
 	requires 'Test::DescribeMe';
-	requires 'Test::Kwalitee';
 	requires 'Test::Most';
 	requires 'Test::Needs';
 	requires 'Test::NoWarnings';
